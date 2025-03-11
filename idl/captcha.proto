@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package captcha;
+
+option go_package = "/captcha";
+
+service CaptchaService {
+    rpc EmailCaptcha(EmailCaptchaRequest) returns (EmailCaptchaResponse);
+    rpc EmailValidate(EmailValidateRequest) returns (EmailValidateResponse);
+    rpc EmailRefresh(EmailRefreshRequest) returns (EmailRefreshResponse);
+}
+
+
+
+message EmailCaptchaRequest {
+    repeated string email = 1;
+}
+message EmailCaptchaResponse {
+    repeated bool success = 1;
+}
+
+message EmailValidateList {
+    string email = 1;
+    string captcha = 2;
+}
+message EmailValidateRequest {
+    repeated EmailValidateList lists = 1;
+}
+message EmailValidateResponse {
+    repeated bool success = 1;
+}
+
+message EmailRefreshRequest {
+    repeated string email = 1;
+}
+message EmailRefreshResponse {
+    repeated bool success = 1;
+}

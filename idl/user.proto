@@ -1,0 +1,86 @@
+syntax = "proto3";
+
+package user;
+
+option go_package = "/user";
+
+service UserService {
+    rpc Login(LoginRequest) returns (LoginResponse);
+    rpc Register(RegisterRequest) returns (RegisterResponse);
+    rpc Check(CheckRequest) returns (CheckResponse);
+    rpc Logout(LogoutRequest) returns (LogoutResponse);
+    rpc Detail(DetailRequest) returns (DetailResponse);
+    rpc Update(UpdateRequest) returns (UpdateResponse);
+}
+
+
+
+message Login {
+    string email = 1;
+    string password = 2;
+}
+message LoginRequest {
+    repeated Login logins = 1;
+}
+message LoginResponse {
+    repeated string user_id = 1;
+}
+
+message Register {
+    string email = 1;
+    string user_name = 2;
+    string password = 3;
+    string password_confirm = 4;
+    string captcha = 5;
+}
+message RegisterRequest {
+    repeated Register registers = 1;
+}
+message RegisterResponse {
+    repeated string user_id = 1;
+}
+
+message CheckRequest {
+    repeated string user_name = 1;
+}
+message CheckInfo {
+    repeated string user_id = 1;
+}
+message CheckResponse {
+    repeated CheckInfo lists = 1;
+}
+
+message LogoutRequest {
+    repeated string user_id = 1;
+}
+message LogoutResponse {
+    repeated bool success = 1;
+}
+
+message DetailRequest {
+    repeated string user_id = 1;
+}
+message DetailInfo {
+    string user_name = 1;
+    string email = 2;
+    string describe = 3;
+    string picture = 4;
+    string created_at = 5;
+}
+message DetailResponse {
+    repeated DetailInfo details = 1;
+}
+
+message Update {
+    string user_id = 1;
+    string new_user_name = 2;
+    string new_describe = 3;
+    string new_picture = 4;
+    string new_password = 5;
+}
+message UpdateRequest {
+    repeated Update updates = 1;
+}
+message UpdateResponse {
+    repeated bool success = 1;
+}

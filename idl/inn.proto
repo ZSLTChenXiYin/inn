@@ -1,0 +1,89 @@
+syntax = "proto3";
+
+package inn;
+
+import "api.proto";
+
+option go_package = "inn";
+
+// 定义空的请求消息类型
+message EmptyRequest {}
+
+// 定义空的响应消息类型
+message EmptyResponse {}
+
+// 定义 UserInfo 消息类型
+message UserInfo {
+    string user_name = 1;
+    string user_picture = 2;
+}
+
+// 定义 Card 消息类型
+message Card {
+    string card_name = 1;
+    string card_describe = 2;
+    string card_picture = 3;
+    string download_url = 4;
+}
+
+// 定义 File 消息类型
+message File {
+    string file_name = 1;
+    uint64 file_size = 2;
+    string create_at = 3;
+    uint32 access_level = 4;
+    string download_url = 5;
+}
+
+// 定义各种响应和请求消息类型
+message GetIndexPageResponse {
+    repeated Card cards = 1;
+}
+message GetHomePageResponse {
+    repeated Card cards = 1;
+    repeated File files = 2;
+}
+
+message PostLoginRequest {
+    string email = 1;
+    string password = 2;
+}
+message PostLoginResponse {
+    string token = 1;
+    UserInfo user_info = 2;
+}
+
+message PostRegisterRequest {
+    string email = 1;
+    string user_name = 2;
+    string password = 3;
+    string confirm_password = 4;
+    string captcha = 5;
+}
+
+// 定义服务
+service InnService {
+    rpc GetIndexPage(EmptyRequest) returns(GetIndexPageResponse) {
+        option (api.get) = "/";
+    }
+    rpc GetLoginPage(EmptyRequest) returns(EmptyResponse) {
+        option (api.get) = "/login";
+    }
+    rpc GetRegisterPage(EmptyRequest) returns(EmptyResponse) {
+        option (api.get) = "/register";
+    }
+    rpc GetHelpPage(EmptyRequest) returns(EmptyResponse) {
+        option (api.get) = "/help";
+    }
+    rpc GetHomePage(EmptyRequest) returns(GetHomePageResponse) {
+        option (api.get) = "/home";
+    }
+
+    rpc PostLogin(PostLoginRequest) returns(PostLoginResponse) {
+        option (api.post) = "/login";
+    }
+
+    rpc PostRegister(PostRegisterRequest) returns(EmptyResponse) {
+        option (api.post) = "/register";
+    }
+}

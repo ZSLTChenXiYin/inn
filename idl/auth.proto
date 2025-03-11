@@ -1,0 +1,46 @@
+syntax = "proto3";
+
+package auth;
+
+option go_package = "/auth";
+
+service AuthService {
+    rpc Token(TokenRequest) returns (TokenResponse);
+    rpc Validate(ValidateRequest) returns (ValidateResponse);
+    rpc Refresh(RefreshRequest) returns (RefreshResponse);
+    rpc Revoke(RevokeRequest) returns (RevokeResponse);
+}
+
+
+
+message TokenRequest {
+    repeated string id = 1;
+}
+message Token {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+message TokenResponse {
+    repeated Token tokens = 1;
+}
+
+message ValidateRequest {
+    repeated string access_token = 1;
+}
+message ValidateResponse {
+    repeated string id = 1;
+}
+
+message RefreshRequest {
+    repeated string refresh_token = 1;
+}
+message RefreshResponse {
+    repeated string access_token = 1;
+}
+
+message RevokeRequest {
+    repeated string access_token = 1;
+}
+message RevokeResponse {
+    repeated bool success = 1;
+}

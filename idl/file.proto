@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package file;
+
+option go_package = "/file";
+
+service FileService {
+    rpc Upload(UploadRequest) returns (UploadResponse);
+    rpc Download(DownloadRequest) returns (DownloadResponse);
+    rpc Check(CheckRequest) returns (CheckResponse);
+    rpc Delete(DeleteRequest) returns (DeleteResponse);
+    rpc Detail(DetailRequest) returns (DetailResponse);
+    rpc Update(UpdateRequest) returns (UpdateResponse);
+}
+
+
+
+message UploadList {
+    string file_name = 1;
+    string file_path = 2;
+    string owner_id = 3;
+    uint32 access_level = 4;
+    string file_password = 5;
+}
+message UploadRequest {
+    repeated UploadList lists = 1;
+}
+message UploadResponse {
+    repeated string file_id = 1;
+}
+
+message DownloadList {
+    string file_id = 1;
+    string user_id = 2;
+    string file_password = 3;
+}
+message DownloadRequest {
+    repeated DownloadList lists = 1;
+}
+message DownloadInfo {
+    string file_name = 1;
+    string file_path = 2;
+}
+message DownloadResponse {
+    repeated DownloadInfo files = 1;
+}
+
+message CheckList {
+    string owner_id = 1;
+    string user_id = 2;
+}
+message CheckRequest {
+    repeated CheckList lists = 1;
+}
+message CheckInfo {
+    repeated string file_id = 1;
+}
+message CheckResponse {
+    repeated CheckInfo lists = 1;
+}
+
+message DeleteFile {
+    string file_id = 1;
+    string user_id = 2;
+}
+message DeleteRequest {
+    repeated DeleteFile files = 1;
+}
+message DeleteResponse {
+    repeated bool success = 1;
+}
+
+message DetailFile {
+    string file_id = 1;
+    string user_id = 2;
+}
+message DetailRequest {
+    repeated DetailFile files = 1;
+}
+message DetailInfo {
+    string file_name = 1;
+    string owner_id = 2;
+    uint32 access_level = 3;
+}
+message DetailResponse {
+    repeated DetailInfo files = 1;
+}
+
+message UpdateFile {
+    string file_id = 1;
+    string user_id = 2;
+    string file_password = 3;
+    uint32 new_access_level = 4;
+    string new_file_name = 5;
+    string new_file_path = 6;
+    string new_file_password = 7;
+}
+message UpdateRequest {
+    repeated UpdateFile files = 1;
+}
+message UpdateResponse {
+    repeated bool success = 1;
+}
