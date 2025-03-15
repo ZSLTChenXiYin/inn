@@ -24,7 +24,7 @@ func TestCaptcha(t *testing.T) {
 	ctx := context.Background()
 
 	email_captcha_resp, err := cli.EmailCaptcha(ctx, &captcha.EmailCaptchaRequest{
-		Email: []string{"2305063773@qq.com"},
+		Email: []string{"1234567@qq.com"},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -33,7 +33,7 @@ func TestCaptcha(t *testing.T) {
 	t.Log(email_captcha_resp)
 
 	email_refresh_resp, err := cli.EmailRefresh(ctx, &captcha.EmailRefreshRequest{
-		Email: []string{"2305063773@qq.com"},
+		Email: []string{"1234567@qq.com"},
 	})
 	if err != nil {
 		t.Fatal(err)
@@ -45,8 +45,8 @@ func TestCaptcha(t *testing.T) {
 		email_validate_resp, err := cli.EmailValidate(ctx, &captcha.EmailValidateRequest{
 			Lists: []*captcha.EmailValidateList{
 				{
-					Email:   "2305063773@qq.com",
-					Captcha: "470063",
+					Email:   "1234567@qq.com",
+					Captcha: "123456",
 				},
 			},
 		})
