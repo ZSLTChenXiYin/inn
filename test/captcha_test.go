@@ -13,12 +13,12 @@ import (
 func TestCaptcha(t *testing.T) {
 	r, err := consul.NewConsulResolver("127.0.0.1:8500")
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	cli, err := captchaservice.NewClient("captcha", client.WithResolver(r))
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	ctx := context.Background()
@@ -27,7 +27,7 @@ func TestCaptcha(t *testing.T) {
 		Email: []string{"2305063773@qq.com"},
 	})
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	t.Log(email_captcha_resp)
@@ -36,7 +36,7 @@ func TestCaptcha(t *testing.T) {
 		Email: []string{"2305063773@qq.com"},
 	})
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	t.Log(email_refresh_resp)
