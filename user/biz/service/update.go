@@ -92,6 +92,7 @@ func (s *UpdateService) Run(req *user.UpdateRequest) (resp *user.UpdateResponse,
 			_, err := user_query.User.WithContext(s.ctx).Where(user_query.User.UserID.Eq(update.UserId)).Update(user_query.User.ALL, query_user)
 			if err != nil {
 				klog.Error("rollback error: ", err)
+				continue
 			}
 		}
 

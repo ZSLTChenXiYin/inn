@@ -5,19 +5,19 @@
 rem 设置构建配置
 
 rem SERVICE_IDL 服务IDL文件，编写的IDL文件请放在idl目录下
-set SERVICE_IDL=user.proto
+set SERVICE_IDL=file.proto
 
 rem SERVICE_TYPE 服务类型，可选项有 RPC, HTTP
 set SERVICE_TYPE=RPC
 
 rem SERVICE_NAME 服务名称
-set SERVICE_NAME=user
+set SERVICE_NAME=file
 
 rem SERVICE_MODULE_NAME 服务模块名称
-set SERVICE_MODULE_NAME=user
+set SERVICE_MODULE_NAME=file
 
 rem SERVICE_OUTPUT_DIR 服务生成目录
-set SERVICE_OUTPUT_DIR=user
+set SERVICE_OUTPUT_DIR=file
 
 
 

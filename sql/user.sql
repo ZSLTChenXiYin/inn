@@ -13,5 +13,5 @@ CREATE TABLE `user`.users (
     INDEX idx_user_name (user_name),            -- 用户名索引
     INDEX idx_created_at (created_at),          -- 创建时间索引
     INDEX idx_deleted_at (deleted_at),          -- 删除时间索引
-    INDEX idx_created_deleted (created_at, deleted_at) -- 复合索引
+    INDEX idx_created_deleted (created_at, deleted_at), -- 复合索引
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
