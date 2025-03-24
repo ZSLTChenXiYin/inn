@@ -1,3 +1,8 @@
 go 1.23.1
 
-use ./captcha
+use (
+	./auth
+	./captcha
+	./file
+	./user
+)

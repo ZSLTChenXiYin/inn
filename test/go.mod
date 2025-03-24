@@ -2,12 +2,20 @@ module test
 
 go 1.23.1
 
-replace captcha => ../captcha
+replace (
+	auth => ../auth
+	captcha => ../captcha
+	file => ../file
+	user => ../user
+)
 
 require (
+	auth v0.0.0-00010101000000-000000000000
 	captcha v0.0.0-00010101000000-000000000000
+	file v0.0.0-00010101000000-000000000000
 	github.com/cloudwego/kitex v0.12.3
 	github.com/kitex-contrib/registry-consul v0.1.0
+	user v0.0.0-00010101000000-000000000000
 )
 
 require (
@@ -55,10 +63,10 @@ require (
 	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/twitchyliquid64/golang-asm v0.15.1 // indirect
 	golang.org/x/arch v0.2.0 // indirect
-	golang.org/x/net v0.24.0 // indirect
-	golang.org/x/sync v0.8.0 // indirect
-	golang.org/x/sys v0.19.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
+	golang.org/x/net v0.25.0 // indirect
+	golang.org/x/sync v0.12.0 // indirect
+	golang.org/x/sys v0.31.0 // indirect
+	golang.org/x/text v0.23.0 // indirect
 	google.golang.org/genproto v0.0.0-20210513213006-bf773b8c8384 // indirect
 	google.golang.org/protobuf v1.33.0 // indirect
 	gopkg.in/yaml.v3 v3.0.1 // indirect

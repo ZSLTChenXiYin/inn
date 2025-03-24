@@ -13,30 +13,30 @@ import (
 func TestCaptcha(t *testing.T) {
 	r, err := consul.NewConsulResolver("127.0.0.1:8500")
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	cli, err := captchaservice.NewClient("captcha", client.WithResolver(r))
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	ctx := context.Background()
 
 	email_captcha_resp, err := cli.EmailCaptcha(ctx, &captcha.EmailCaptchaRequest{
-		Email: []string{"2305063773@qq.com"},
+		Email: []string{"1234567@qq.com"},
 	})
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	t.Log(email_captcha_resp)
 
 	email_refresh_resp, err := cli.EmailRefresh(ctx, &captcha.EmailRefreshRequest{
-		Email: []string{"2305063773@qq.com"},
+		Email: []string{"1234567@qq.com"},
 	})
 	if err != nil {
-		panic(err)
+		t.Fatal(err)
 	}
 
 	t.Log(email_refresh_resp)
@@ -45,8 +45,8 @@ func TestCaptcha(t *testing.T) {
 		email_validate_resp, err := cli.EmailValidate(ctx, &captcha.EmailValidateRequest{
 			Lists: []*captcha.EmailValidateList{
 				{
-					Email:   "2305063773@qq.com",
-					Captcha: "470063",
+					Email:   "1234567@qq.com",
+					Captcha: "123456",
 				},
 			},
 		})

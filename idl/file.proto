@@ -40,23 +40,19 @@ message DownloadRequest {
 message DownloadInfo {
     string file_name = 1;
     string file_path = 2;
+    uint64 file_size = 3;
+    string check_sum = 4;
 }
 message DownloadResponse {
     repeated DownloadInfo files = 1;
 }
 
-message CheckList {
+message CheckRequest {
     string owner_id = 1;
     string user_id = 2;
 }
-message CheckRequest {
-    repeated CheckList lists = 1;
-}
-message CheckInfo {
-    repeated string file_id = 1;
-}
 message CheckResponse {
-    repeated CheckInfo lists = 1;
+    repeated string file_id = 1;
 }
 
 message DeleteFile {
@@ -81,6 +77,7 @@ message DetailInfo {
     string file_name = 1;
     string owner_id = 2;
     uint32 access_level = 3;
+    uint64 file_size = 4;
 }
 message DetailResponse {
     repeated DetailInfo files = 1;
