@@ -3,7 +3,10 @@ module test
 go 1.23.1
 
 replace (
+<<<<<<< HEAD
 	auth => ../auth
+=======
+>>>>>>> fee9b7117890057b988092da78d447bbee82c228
 	captcha => ../captcha
 	file => ../file
 	user => ../user
