@@ -1,10 +1,7 @@
 go 1.23.1
 
 use (
-<<<<<<< HEAD
 	./auth
-=======
->>>>>>> fee9b7117890057b988092da78d447bbee82c228
 	./captcha
 	./file
 	./user
